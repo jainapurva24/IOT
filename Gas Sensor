@@ -1,0 +1,22 @@
+const int gasSensorPin = A0;
+
+void setup() {
+	pinMode(gasSensorPin, INPUT);
+	Serial.begin(115200);
+}
+
+void loop() {
+	int gasLevel = analogRead(gasSensorPin);
+	Serial.print("Gas Level: ");
+	Serial.println(gasLevel);
+
+	if(gasLevel > 100) 
+		{
+			Serial.println("High Gas");
+		}
+	else
+		{
+			Serial.println("Low Gas");
+		}
+	delay(1000);
+}
