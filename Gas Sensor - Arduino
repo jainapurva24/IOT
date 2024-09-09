@@ -1,20 +1,25 @@
-const int gasSensorPin = A0;  
-int gasSensorValue = 0;
+int gas_level;
 
 void setup() 
 	{
+		pinMode(A1, INPUT);
 		Serial.begin(9600);
 }
 
 void loop() 
 	{
-		gasSensorValue = analogRead(gasSensorPin);
-  		Serial.print("Gas Sensor Value: ");
-		Serial.println(gasSensorValue);
-  
-  		if (gasSensorValue > 400) 
+		gas_level = analogRead(A1);
+  		Serial.print("Gas Level Is: ");
+		Serial.println(gas_level);
+  		delay(500);
+
+  		if (gas_level > 300) 
 		{
 			Serial.println("Warning: Gas detected!");
+		}
+		else
+		{
+			Serial.println("No Gas detected!");
 		}
   		delay(1000);
 }
