@@ -1,0 +1,24 @@
+#define Echo_Pin D5
+#define Trigger_Pin D9
+double duration, distance;
+
+void setup() {
+	Serial.begin(115200);
+	pinMode(Trigger_Pin, INPUT);
+	pinMode(Echo_Pin, INPUT);
+	
+}
+
+void loop() {
+	digitalWrite(Trigger_Pin, LOW);
+	delayMicroseconds(2);
+	digitalWrite(Trigger_Pin, HIGH);
+	delayMicroseconds(10);
+	digitalWrite(Trigger_Pin, LOW);
+	duration = pulseIn(Echo_Pin, HIGH);
+	distance = duration*0.034/2;
+	Serial.println(duration);
+	Serial.print(distance);
+	Serial.println("cm");
+	delay(1000);
+}
