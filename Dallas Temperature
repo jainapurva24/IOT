@@ -1,0 +1,20 @@
+#include<OneWire.h>
+#include<DallasTemperature.h>
+#define One_Wire_Bus D2
+#define buzzer 7
+
+OneWire oneWire(One_Wire_Bus);
+DallasTemperature sensors(&oneWire);
+
+void setup() {
+	Serial.begin(115200);
+	pinMode(One_Wire_Bus, INPUT);
+	
+}
+
+void loop() {
+	sensors.requestTemperatures();
+	Serial.println("Temperature for the device 1(index 0) is: ");
+	double value = sensors.getTempCByIndex(0);
+	Serial.print(value);
+}
