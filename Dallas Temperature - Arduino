@@ -5,20 +5,16 @@
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
-void setup() {
-  Serial.begin(9600);
-  sensors.begin();
+void setup() 
+	{
+		Serial.begin(9600);
+		pinMode(One_Wire_Bus, INPUT);
 
-void loop() {
-  sensors.requestTemperatures();
-  
-  // Get temperature in Celsius for the first sensor (index 0)
-  double temperatureC = sensors.getTempCByIndex(0);
-  
-  // Print the temperature to the Serial Monitor
-  Serial.print("Temperature: ");
-  Serial.print(temperatureC);
-  Serial.println(" °C");
-  
-  delay(1000);  // Wait for 1 second before next reading
+void loop() 
+	{
+		sensors.requestTemperatures();
+		Serial.println("Temperature for the device 1(index 0) is: ");
+		double value = sensors.getTempCByIndex(0);
+		Serial.print(value);
+		delay(1000);
 }
