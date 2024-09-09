@@ -1,7 +1,6 @@
 #include<OneWire.h>
 #include<DallasTemperature.h>
 #define One_Wire_Bus D2
-#define buzzer 7
 
 OneWire oneWire(One_Wire_Bus);
 DallasTemperature sensors(&oneWire);
