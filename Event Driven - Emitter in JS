@@ -1,0 +1,19 @@
+const EventEmitter = require("events")
+class MoviTicket extends EventEmitter {
+    constructor() {
+        super(); 
+    }
+    bookticket(username,password){
+        console.log(" Booking Username " + username)
+        console.log(" Booking Username " + password)
+
+        this.emit("ticketBooked",{username,password})
+    }
+}
+const moviTicket = new MoviTicket()
+moviTicket.on('ticketBooked',(data)=>{
+    console.log("Ticket has been Booked ")
+})
+
+moviTicket.bookticket('XYZ','1234')
+moviTicket.emit('Error', new Error('Failed to process payment.'));
