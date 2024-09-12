@@ -1,0 +1,27 @@
+const EventEmitter = require('events');
+
+const eventEmitter = new EventEmitter();
+
+let availableSeats = 3; 
+
+eventEmitter.on('bookTicket', (email, price) => {
+  if (availableSeats > 0) {
+    availableSeats--;
+
+    const bookingDetails = {
+      email: email,
+      price: price,
+      dateTime: new Date()
+    };
+    
+    console.log('Ticket booked successfully! Details:', bookingDetails);
+  } else {
+    console.log('Houseful! No more seats available.');
+  }
+});
+
+// Emit the 'bookTicket' event for different customers
+eventEmitter.emit('bookTicket', 'customer1@example.com', 10);
+eventEmitter.emit('bookTicket', 'customer2@example.com', 12);
+eventEmitter.emit('bookTicket', 'customer3@example.com', 8);
+eventEmitter.emit('bookTicket', 'customer4@example.com', 15);
