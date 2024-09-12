@@ -1,0 +1,18 @@
+function simulateAsyncTask() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('Task completed!');
+        }, 2000);
+    });
+}
+
+
+async function performTask() {
+    console.log('Task started...');
+    
+    let result = await simulateAsyncTask();
+    
+    console.log(result);
+}
+
+performTask();
